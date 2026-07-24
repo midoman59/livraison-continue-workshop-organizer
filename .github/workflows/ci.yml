@@ -200,9 +200,6 @@ jobs:
           GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
         run: |
           semantic-release
-          # Store version for next steps
-          VERSION=$(npm list -g semantic-release 2>/dev/null | grep semantic-release | grep -oP '\d+\.\d+\.\d+' || echo "unknown")
-          echo "new_version=${VERSION}" >> $GITHUB_OUTPUT
 
       - name: Check for new release
         id: check_release
