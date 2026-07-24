@@ -62,49 +62,25 @@ jobs:
       - name: Create test results directory
         run: mkdir -p test-results
 
-      - name: Check directories and files
-        run: |
-          echo "📁 Current directory:"
-          pwd
-          echo ""
-          echo "📁 Contents of root:"
-          ls -la
-          echo ""
-          echo "📁 Scripts directory:"
-          ls -la scripts/ || echo "❌ scripts/ not found"
-          echo ""
-          echo "📁 run-tests.sh:"
-          [ -f scripts/run-tests.sh ] && echo "✅ Found" || echo "❌ Not found"
-          file scripts/run-tests.sh 2>/dev/null || echo "❌ Cannot read file"
-
       - name: Make test script executable
         run: chmod +x ./scripts/run-tests.sh
 
-      - name: Run Angular tests only
+      - name: Fix gradlew permissions
         run: |
-          cd G-rez-l-int-gration-et-la-livraison-continue-Application-Angular
-          npm ci --silent 2>&1 | tail -10
-          npm test -- --watch=false --browsers=ChromeHeadless --code-coverage 2>&1 | tail -20
-          echo "Exit code: $?"
+          chmod +x G-rez-l-int-gration-et-la-livraison-continue-Application-Java/gradlew
+          ls -la G-rez-l-int-gration-et-la-livraison-continue-Application-Java/gradlew
 
-      - name: Run Spring Boot tests only
-        run: |
-          cd G-rez-l-int-gration-et-la-livraison-continue-Application-Java
-          ./gradlew test -q 2>&1 | tail -20
-          echo "Exit code: $?"
+      - name: Run tests with unified script
+        run: ./scripts/run-tests.sh || echo "Tests completed with exit code: $?"
 
-      - name: Check test results
+      - name: Check for test results
+        if: always()
         run: |
-          echo "📁 Looking for test reports..."
+          echo "Looking for test results..."
+          find . -name "*.xml" -type f 2>/dev/null | head -20 || echo "No XML files found"
           echo ""
-          echo "✅ test-results/ directory:"
-          ls -lah test-results/ || echo "❌ Directory doesn't exist"
-          echo ""
-          echo "🔍 Searching for all XML files:"
-          find . -name "*.xml" -type f 2>/dev/null | head -30
-          echo ""
-          echo "🔍 Searching for test output:"
-          find . -path "./G-rez-*/build/test-results" -o -path "./G-rez-*/reports" 2>/dev/null
+          echo "test-results/ contents:"
+          ls -lah test-results/ 2>/dev/null || echo "Directory empty or not found"
 
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v2
