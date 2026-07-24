@@ -1,0 +1,56 @@
+# Node.js / npm
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Angular
+/dist/
+/browser/
+/.angular/cache
+.angular/
+coverage/
+reports/
+
+# Java / Gradle
+build/
+.gradle/
+.gradletasknamecache
+*.jar
+*.war
+*.ear
+target/
+bin/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.class
+*.log
+
+# Docker
+docker-compose.override.yml
+
+# Environment
+.env.local
+.env.*.local
+
+# Test results
+test-results/
+coverage/
+*.xml
+
+# Build artifacts
+dist/
+build/
+.next/
+out/
+
+# Misc
+.cache/
+.temp/
+tmp/
