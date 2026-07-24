@@ -330,5 +330,9 @@ TOTAL :                         100% (30/30)
 
 ---
 
+### v0.1.0 Release Notes
+- feat: Add comprehensive CI/CD pipeline documentation
+- feat: Implement automated testing and deployment workflow
+
 ### v0.0.1 Release Notes
 - Fix: Minor bug correction in documentation
