@@ -327,3 +327,8 @@ TOTAL :                         100% (30/30)
 ---
 
 **Prêt pour tester en conditions réelles sur GitHub Actions ! 🚀**
+
+---
+
+### v0.0.1 Release Notes
+- Fix: Minor bug correction in documentation
