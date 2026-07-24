@@ -71,16 +71,16 @@ jobs:
           ls -la G-rez-l-int-gration-et-la-livraison-continue-Application-Java/gradlew
 
       - name: Run tests with unified script
-        run: ./scripts/run-tests.sh || echo "Tests completed with exit code: $?"
+        run: ./scripts/run-tests.sh || true
 
       - name: Check for test results
         if: always()
         run: |
           echo "Looking for test results..."
-          find . -name "*.xml" -type f 2>/dev/null | head -20 || echo "No XML files found"
+          find . -name "*.xml" -type f 2>/dev/null | head -20
           echo ""
           echo "test-results/ contents:"
-          ls -lah test-results/ 2>/dev/null || echo "Directory empty or not found"
+          ls -lah test-results/ 2>/dev/null
 
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v2
