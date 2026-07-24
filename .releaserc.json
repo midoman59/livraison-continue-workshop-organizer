@@ -134,7 +134,8 @@
         ],
         "releasedLabels": [
           "released"
-        ]
+        ],
+        "draftRelease": false
       }
     ],
     [
