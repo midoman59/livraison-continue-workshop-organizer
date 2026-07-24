@@ -141,7 +141,7 @@ git push origin main
 
 ### Job 1 : Test
 - ✅ Checkout du code
-- ✅ Setup Node.js 18 + Java 21
+- ✅ Setup Node.js 22 + Java 21
 - ✅ Cache npm et Gradle
 - ✅ Exécution `./scripts/run-tests.sh`
 - ✅ Rapport des tests
@@ -169,7 +169,7 @@ git push origin main
 ### Les tests échouent
 - Vérifier les logs du job "Run Tests"
 - Vérifier `scripts/run-tests.sh` est exécutable
-- Vérifier Node.js 18 et Java 21 sont bien configurés
+- Vérifier Node.js 22 et Java 21 sont bien configurés
 
 ### Les images ne sont pas poussées
 - Vérifier le GITHUB_TOKEN a les bonnes permissions
